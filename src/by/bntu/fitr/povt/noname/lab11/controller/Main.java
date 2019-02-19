@@ -24,9 +24,12 @@ public class Main {
         Vector vector = new Vector(intArray);
         int sumOfElem = Calculator.sumOfElemBetweenFirstAndLastZero(vector);
         int prodOfElem = Calculator.prodOfEvenElem(vector);
+        int firstZero = Calculator.indexOfFirstZero(vector);
+        int lastZero = Calculator.indexOfLastZero(vector);
 
         printer.print(prodOfElem);
         printer.print(sumOfElem);
-
+        printer.print(firstZero);
+        printer.print(lastZero);
     }
 }
