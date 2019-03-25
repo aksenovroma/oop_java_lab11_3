@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Vector {
     private int[] elements;
 
-    public Vector(int[] elements) {
+    public Vector(int... elements) {
         this.elements = elements;
     }
 
@@ -17,6 +17,10 @@ public class Vector {
         if (elements != null){
             this.elements = elements;
         }
+    }
+
+    public int size() {
+        return elements.length;
     }
 
     @Override

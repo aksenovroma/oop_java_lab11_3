@@ -6,89 +6,49 @@ public class Calculator {
     public static int prodOfEvenElem(Vector vector){
         int prodOfElem = 1;
 
-        if (vector == null){
-            return prodOfElem;
+        if (vector != null && vector.getElements() != null && vector.size() > 0){
+            for (int i = 0; i < vector.size(); i += 2){
+                prodOfElem *= vector.getElements()[i];
+            }
         }
-
-        int[] intArray = vector.getElements();
-
-        if (intArray == null){
-            return prodOfElem;
-        }
-
-        for (int i = 0; i < intArray.length; i += 2){
-            prodOfElem *= intArray[i];
-        }
-
         return prodOfElem;
     }
 
     public static int sumOfElemBetweenFirstAndLastZero(Vector vector){
         int sumOfElem = 0;
 
-        if (vector == null){
-            return sumOfElem;
+        if (vector != null && vector.getElements() != null && vector.size() > 0){
+            int indexFirst = indexOfFirstZero(vector);
+            int indexLast = indexOfLastZero(vector);
+
+            if (indexFirst != -1 && indexLast != -1){
+                for (int i = indexFirst; i < indexLast; i++){
+                    sumOfElem += vector.getElements()[i];
+                }
+            }
         }
-
-        int[] intArray = vector.getElements();
-
-        if (intArray == null){
-            return sumOfElem;
-        }
-
-        int indexFirst = indexOfFirstZero(vector);
-        int indexLast = indexOfLastZero(vector);
-
-        if (indexFirst == -1 || indexLast == -1){
-            return sumOfElem;
-        }
-
-        for (int i = indexFirst; i < indexLast; i++){
-            sumOfElem += intArray[i];
-        }
-
         return sumOfElem;
     }
 
     public static int indexOfFirstZero(Vector vector){
-        int indexFirst = -1;
-
-        if (vector == null){
-            return indexFirst;
-        }
-
-        int[] doubleArray = vector.getElements();
-
-        if (doubleArray == null || doubleArray.length < 1){
-            return indexFirst;
-        }
-
-        for (int i = 0; i < doubleArray.length; i++){
-            if (doubleArray[i] == 0){
-                return i;
+        if (vector != null && vector.getElements() != null && vector.size() > 0){
+            for (int i = 0; i < vector.size(); i++){
+                if (vector.getElements()[i] == 0){
+                    return i;
+                }
             }
         }
-        return indexFirst;
+        return -1;
     }
 
     public static int indexOfLastZero(Vector vector){
-        int indexLast = -1;
-
-        if (vector == null){
-            return indexLast;
-        }
-
-        int[] doubleArray = vector.getElements();
-
-        if (doubleArray == null || doubleArray.length < 1){
-            return indexLast;
-        }
-
-        for (int i = doubleArray.length - 1; i >= 0; i--){
-            if (doubleArray[i] == 0){
-                return i;
+        if (vector != null && vector.getElements() != null && vector.size() > 0) {
+            for (int i = vector.size() - 1; i >= 0; i--){
+                if (vector.getElements()[i] == 0){
+                    return i;
+                }
             }
         }
-        return indexLast;
+        return -1;
     }
 }
